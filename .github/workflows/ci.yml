@@ -19,11 +19,3 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # 4. Set up the specific Node.js runtime environment
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm' # Optimizes speed by caching dependencies
-
-      
