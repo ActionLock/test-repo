@@ -1,0 +1,29 @@
+name: Continuous Integration
+
+# 1. Trigger the workflow on pushes or pull requests to the main branch
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch: # Allows you to manually trigger the workflow from the Actions tab
+
+jobs:
+  # 2. Define a job named "build-and-test"
+  build-and-test:
+    name: Build and Test Application
+    runs-on: ubuntu-latest # The virtual environment context running the job
+
+    steps:
+      # 3. Fetch the repository code onto the runner
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 4. Set up the specific Node.js runtime environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm' # Optimizes speed by caching dependencies
+
+      
